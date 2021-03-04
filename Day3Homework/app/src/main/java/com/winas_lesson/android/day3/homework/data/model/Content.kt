@@ -6,7 +6,7 @@ data class Content(
     var name: String = "",
     var address: String = "",
     var description: String = "",
-    var imageUrlString: String = "\"http://i.imgur.com/DvpvklR.png\""
+    var imageUrlString: String = "http://i.imgur.com/DvpvklR.png"
 ) {
     val icons: MutableList<BrandIcon>
         get() {
