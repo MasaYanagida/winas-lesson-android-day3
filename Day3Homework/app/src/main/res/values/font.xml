@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="icon_brand_twitter" translatable="false">&#xf099;</string>
+    <string name="icon_brand_reddit" translatable="false">&#xf281;</string>
+    <string name="icon_brand_instagram" translatable="false">&#xf16d;</string>
+    <string name="icon_brand_line" translatable="false">&#xf3c0;</string>
+    <string name="icon_brand_whatsapp" translatable="false">&#xf232;</string>
+    <string name="icon_brand_snapchat" translatable="false">&#xf2ac;</string>
+</resources>

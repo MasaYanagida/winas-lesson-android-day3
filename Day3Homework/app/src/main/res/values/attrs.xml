@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Customisable">
+        <attr name="brand_icon" format="enum">
+            <enum name="twitter" value="1" />
+            <enum name="reddit" value="2" />
+            <enum name="instagram" value="3" />
+            <enum name="snapchat" value="4" />
+            <enum name="line" value="5" />
+            <enum name="whatsapp" value="6" />
+        </attr>
+    </declare-styleable>
+</resources>

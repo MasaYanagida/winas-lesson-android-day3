@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Day3Sample</string>
+    <string name="sample_html"><![CDATA[This is <font color="%1$s">%2$s %3$s</font>!! URL= %4$s]]></string>
+</resources>

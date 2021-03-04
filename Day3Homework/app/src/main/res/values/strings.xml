@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Day3Homework</string>
+    <string name="brand_title"><![CDATA[💡 <font color="%1$s">%2$s %3$s</font>からのコンテンツです]]></string>
+    <string name="brand_text"><![CDATA[<font color="%1$s">%2$s</font> @YourName]]></string>
+</resources>
