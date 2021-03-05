@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:orientation="vertical">
+
     <Button
         android:id="@+id/button"
         android:layout_width="50dp"
@@ -10,6 +11,19 @@
         style="@style/button_common"
         android:text="✖️"
         />
+    <com.winas_lesson.android.day3.day3sample.components.SampleHeaderView
+        android:id="@+id/header_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:active_color="@color/winasLightBlue"
+        app:inactive_color="@android:color/white"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="#cccccc" />
     <FrameLayout
         android:id="@+id/header_fragment_container"
         android:layout_width="match_parent"

@@ -7,8 +7,30 @@ data class Content(
     var name: String = "",
     var address: String = "",
     var description: String = ""
-) {
-    companion object {
+) : Parcelable {
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(name)
+        parcel.writeString(address)
+        parcel.writeString(description)
+    }
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    constructor(parcel: Parcel) : this(
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "")
+
+    companion object CREATOR : Parcelable.Creator<Content> {
+        override fun createFromParcel(parcel: Parcel): Content {
+            return Content(parcel)
+        }
+        override fun newArray(size: Int): Array<Content?> {
+            return arrayOfNulls(size)
+        }
+
         fun create(): Content {
             val ret = Content()
             ret.name = listOf("佐久間大輝","島奈穂","岩佐泰賀","西結羽","二瓶輝男","室井孝治","三谷和花","畠山富男","深沢由太郎","梅原誠二","上原時子","斉藤琉叶","塩谷亘","岸田祐希","猪俣力","大友真希","高坂喜久雄","三宅光枝","小幡海斗","三木尚生","重松沙耶","山村洋司","阪本剣都","熊谷忠一","福井蒼依","澤田早希","荻野道世","田川京子","谷川悟","滝田弘之").random()
