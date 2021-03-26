@@ -29,6 +29,19 @@ interface DetailViewFragmentListener {
 
 class DetailViewFragment : Fragment(), ViewBindable {
     override lateinit var binding: ViewBinding
+    var listener: DetailViewFragmentListener? = null
+
+    private val nameTextView: TextView?
+        get() = (binding as? DetailViewFragmentBinding)?.nameTextView
+    private val brandsTextView: TextView?
+        get() = (binding as? DetailViewFragmentBinding)?.brandsTextView
+    private val descriptionTextView: TextView?
+        get() = (binding as? DetailViewFragmentBinding)?.descriptionTextView
+    private val imageView: ImageView?
+        get() = (binding as? DetailViewFragmentBinding)?.imageView
+    private val button: Button?
+        get() = (binding as? DetailViewFragmentBinding)?.button
+    var content: Content = Content()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -36,7 +49,35 @@ class DetailViewFragment : Fragment(), ViewBindable {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = DetailViewFragmentBinding.inflate(inflater, container, false)
 
-        // TODO
+        nameTextView?.text = content.name
+        var brandIconTexts = mutableListOf<String>()
+        content.icons.forEach { icon ->
+            val string = getString(
+                R.string.brand_text,
+                "#${icon.color.toColorString()}",
+                getString(icon.resourceId)
+            )
+            brandIconTexts.add(string)
+        }
+        val brandIconContent = brandIconTexts.joinToString("<br />")
+        val spannedText = SpannableString(Html.fromHtml(brandIconContent))
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && spannedText.isNotEmpty()) { // version 28
+            // custom font in spannable
+            ResourcesCompat.getFont(context ?: App.context, R.font.fa_brands_400)?.let {
+                val span = TypefaceSpan(it)
+                spannedText.setSpan(span, 0, spannedText.length - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            }
+        }
+        brandsTextView?.setText(spannedText, TextView.BufferType.SPANNABLE)
+        descriptionTextView?.text = content.description
+        imageView?.let {
+            Glide.with(this)
+                .load(content.imageUrlString)
+                .into(it)
+        }
+        button?.setOnClickListener {
+            listener?.onFavoriteButtonTapped(this)
+        }
         return binding.root
     }
 }
