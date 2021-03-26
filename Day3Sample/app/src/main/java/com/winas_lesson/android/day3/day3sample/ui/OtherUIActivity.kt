@@ -65,10 +65,10 @@ class OtherUIActivity : AppCompatActivity(), ViewBindable {
 
         // ③ set image from icon font
         textView?.setCompoundDrawables(
-            BrandIconDrawable.create(this, BrandIcon.TWITTER, 20.pixel),
-            null,
-            null,
-            null
+                BrandIconDrawable.create(this, BrandIcon.TWITTER, 20.pixel),
+        null,
+        null,
+        null
         )
 
         // ④ サーバから取得
